@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joe's Hotdog</title>
+<style type="text/css">
+
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #fbe38b;
+            margin: 0;
+            padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+    }
+    h3 {
+        text-align: center;
+    }
+
+    .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+        background-color: #FFF;
+    }
+  
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border-bottom: 1px solid #DDD;
+    }
+
+    th {
+        background-color: #f9f9f9;
+        padding-bottom: 2px;
+    }
+    table td {
+        text-align: center;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    .totals {
+        margin-top: 20px;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+
+    }
+
+</style>
+</head>
+
+<body>
+
+    <img src="hotdog.png" alt="Joe's Hotdogs" width="200px">
+
+    
+    <h1> Joe's Hotdog</h1>
+    <h3> Here's your order: </h3>
+    <div class="content">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Hotdogs</td>
+                <td id="numDogs"></td>
+                <td>$4.65</td>
+                <td id ="dogTotal"></td>
+    
+            </tr>
+            <tr>
+                <td>Fries</td>
+                <td id="numFries"></td>
+                <td>$3.75</td>
+                <td id ="fryTotal"></td>
+            </tr>
+            <tr>
+                <td>Soda</td>
+                <td id="numSodas"></td>
+                <td>$1.89</td>
+                <td id ="sodaTotal"></td>
+            </tr>
+               
+        </table>
+        <div class="totals">
+            <p id="subtotal"></p>
+            <p id="discount"></p>
+            <p id="subAfterDiscount"></p>
+            <p id="Tax"></p>
+            <p id="Total"></p>
+        </div>
+       
+    </div>
+   
+
+    <script>
+        function showMoney(num) {
+            num = num * 100;
+            num = Math.round(num);
+            num = num/100;
+
+            let final = num.toString();
+            //if there is not a decimal
+            if(final.indexOf(".") == final.length -2) {
+                final += "0";
+            } else if(final.indexOf(".") == -1) {
+                final += ".00"
+            }
+
+            return final;
+        }
+
+
+        let numDogs = parseFloat(window.prompt("How many hotdogs would you like?"));
+        let numFries = parseFloat(window.prompt("How many fries would you like?"));
+        let numSoda = parseFloat(window.prompt("How many sodas would you like?"));
+
+        let dogTotal = 4.65 * numDogs;
+        let sodaTotal = 1.89 * numSoda
+        let fryTotal = 3.75 * numFries;
+
+        subtotal = parseFloat(fryTotal) + parseFloat(dogTotal)  + parseFloat(sodaTotal);
+        
+        let discount = 0;
+        if(subtotal > 25) {
+            discount = subtotal * .10
+        }
+        subTotAfterDiscount = subtotal - discount;
+        subTotAfterDiscount = parseFloat(subTotAfterDiscount);
+        tax = .0625 * subTotAfterDiscount
+        final = parseFloat(subTotAfterDiscount) + parseFloat(tax)
+        final = showMoney(final);
+        tax = showMoney(tax);
+        subTotAfterDiscount = showMoney(subTotAfterDiscount);
+        discount = showMoney(discount);
+
+        subtotal = showMoney(subtotal);
+
+        dogTotal = showMoney(dogTotal);
+        sodaTotal = showMoney(sodaTotal);
+        fryTotal = showMoney(fryTotal);
+
+        let dogPrice = document.getElementById("dogTotal").innerHTML = 
+                                        "<td> $" +dogTotal + "</td>";
+
+        let dog = document.getElementById("numDogs").innerHTML = 
+                                        "<td>" +numDogs + "</td>";
+
+        let fry = document.getElementById("numFries").innerHTML = 
+                                        "<td>" +numFries + "</td>";
+
+        let fryPrice= document.getElementById("fryTotal").innerHTML = 
+                                        "<td> $" + fryTotal + "</td>";
+
+
+        let soda = document.getElementById("numSodas").innerHTML = 
+                                        "<td>" +numSoda + "</td>";
+
+        let sodaPrice= document.getElementById("sodaTotal").innerHTML = 
+                                        "<td> $" + sodaTotal + "</td>";
+
+        let sub= document.getElementById("subtotal").innerHTML = 
+                                        "<p> Subtotal: $" + subtotal + "</p>";
+        
+        if(discount > 0) {
+            let disc = document.getElementById("discount").innerHTML =
+                                         "<p> Discount: -$" + discount + "</p>"
+
+        let subAfterdisc = document.getElementById("subAfterDiscount").innerHTML
+                                 = "<p> Subtotal after discount: $" + subTotAfterDiscount + "</p>"
+        }
+       
+
+        let taxes = document.getElementById("Tax").innerHTML = 
+                                        "<p> Taxes: $" + tax + "</p>"
+
+        let tot = document.getElementById("Total").innerHTML = 
+                                        "<p> Total: $" + final + "</p>"
+
+    </script>
+
+
+
+</body>
+</html>
+
