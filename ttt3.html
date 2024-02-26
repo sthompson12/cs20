@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: arial;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: monospace;
+            font-size: 70px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .board-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .board {
+            margin: auto;
+            width: 300px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            margin: 3px;
+            border: 1px solid #000;
+            border-color: #000;
+            border-radius: 5px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+            font-family: arial;
+
+        }
+        
+
+        .square:hover {
+            background-color: #74d1f9;
+        }
+
+        #turn {
+            font-size: 30px;
+            display: inline;
+            height: 90px;
+            vertical-align: top;
+        }
+
+
+        .win {
+            margin-top: 20px;
+            border-style: solid;
+        }
+
+        .win p {
+            font-size: 30px;
+            padding: 5px;
+        }
+
+        .button {
+            
+            border: none;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 20px;
+            margin: 4px 2px;
+            margin-top: 40px;
+
+            cursor: pointer;
+            background-color: #74d1f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>TIC TAC TOE</h1>
+
+        <div id="turn">
+            It is X's Turn
+        </div>
+        <div class="board-container">
+            <div class="board">
+                <script>
+                    //start with x turn
+                    let turn = "X"
+
+                    //function that clears the board when called
+                    // also restarts the turn to x's turn
+                    function startGame() {
+                        const squares = document.querySelectorAll('.square');
+                        squares.forEach(function(square) {
+                            square.innerHTML = ''; 
+                        });
+                        turn = "X"
+                        document.getElementById("turn").innerHTML ="It is " + turn + "'s turn";
+                    }
+
+                    
+
+
+                    //original javascript given
+                    const NUM_SQUARES = 9;
+                    for (let i = 0; i < NUM_SQUARES; i++) {
+                        const id = "sq" + i;
+                        document.write("<div class='square' id='" + id + "'></div>");
+                    }
+
+
+
+                    const squares = document.querySelectorAll('.square');
+
+                    //for each square add the event so that when clicked it prints an x or o
+                    // also changes the turn after each click
+                    squares.forEach(function(square) {
+                        square.addEventListener('click', function() {
+                            if(this.innerHTML == '') {
+                                alert( this.id);
+                                this.innerHTML = turn;
+                                turn = turn === 'X' ? 'O' : 'X';
+                                document.getElementById("turn").innerHTML = "It is " + turn + "'s turn";
+                            }
+                        });
+                    });
+                   
+        
+            
+                </script>
+
+            </div>
+            <button class="button" onclick="startGame()">Start Game</button>
+           
+            <div class="win">
+                <p>Win Condition</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

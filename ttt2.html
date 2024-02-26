@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: arial;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: monospace;
+            font-size: 70px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 900px;
+        }
+
+        .board-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .board {
+            margin: auto;
+            width: 300px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            margin: 3px;
+            border: 1px solid #000;
+            border-color: #000;
+            border-radius: 5px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+            font-family: arial;
+
+        }
+        
+
+        .square:hover {
+            background-color: #ddefef;
+        }
+
+        .turn {
+            margin: 20px;
+            border-style: solid;
+        }
+
+        .turn p {
+            font-size: 30px;
+            display: inline;
+            padding: 5px;
+
+        }
+
+
+        .win {
+            margin-top: 20px;
+            border-style: solid;
+        }
+
+        .win p {
+            font-size: 30px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>TIC TAC TOE</h1>
+
+        <div class="turn">
+            <p>Turn</p>
+        </div>
+        <div class="board-container">
+            <div class="board">
+                <script>
+                    const NUM_SQUARES = 9;
+                    for (i = 0; i < NUM_SQUARES; i++) {
+                        id = "sq" + i;
+                        document.write("<div class='square' id='" + id + "'></div>");
+                    }
+                    //write in x and o in random squares 
+                    document.getElementById("sq0").innerHTML = "X";
+                    document.getElementById("sq5").innerHTML = "X";
+                    document.getElementById("sq6").innerHTML = "O";
+                </script>
+            </div>
+
+           
+            <div class="win">
+                <p>Win Condition</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

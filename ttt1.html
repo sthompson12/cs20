@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+  
+</head>
+
+<style>
+    
+
+    .board{
+        margin: auto;
+        width: 800px;
+        display: block;
+        
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+       
+    }
+ 
+    .box {
+        width: 100px;
+        height: 100px;
+        margin: 3px;
+        border: 1px solid #000;
+        border-color: #000;
+        border-radius: 5px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 70px;
+        font-family: arial;
+
+    }
+
+    .box:hover {
+        background-color: #ddefef;
+    }
+</style>
+
+<body>
+    <div class="board">
+
+    
+        <div class ="row">
+            <div class="box" id="one"> X </div>
+            <div class="box" id="two">&nbsp</div>
+            <div class="box" id="three">&nbsp</div>
+   
+        </div>
+
+        <div class="row">
+            <div class="box" id="four">  &nbsp</div>
+            <div class="box" id="five"> &nbsp</div>
+            <div class="box" id="six">X</div>
+  
+        </div>
+       
+        <div class="row"> 
+            <div class="box" id="seven">  O</div>
+            <div class="box" id="eight">&nbsp</div>
+            <div class="box" id="nine">&nbsp</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
